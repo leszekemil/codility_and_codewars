@@ -2,6 +2,7 @@
 
 # PhpStorm
 .idea
+.idea/
 
 # VSCode
 .vscode
