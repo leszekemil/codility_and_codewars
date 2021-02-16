@@ -49,9 +49,7 @@ def solution2(N):
     cnt = 0
     result = 0
     found_one = False
-
     i = N
-
     while i:
         if i & 1 == 1:
             if (found_one is False):
@@ -62,53 +60,50 @@ def solution2(N):
         else:
             cnt += 1
         i >>= 1
-
     return result
 
 print(solution2(1041))
 
 
 # 3
-def countBinaryGap(num):
-    binary = format(num , "b")
-    print("Longest Binary Gap in :" + binary)
-    gap = False         # to indicate if there is a gap
-    counter = 0         # to count zeros in each gap
-    last = ''           # to store last iteration value
-    binary_gap = 0      # to store longest gap value
-    for s in binary:
-        if last == '':
-            last = str(s)
-            continue
-        else :
-            if s == '0':
-                if last == '1':
-                    counter += 1
-                    last = '0'
-                    gap = True
-                    continue
-                if last == '0':
-                    if counter > 0 :
-                        counter += 1
-                        last = '0'
-                        continue
-                    if counter == 0:
-                        last = '0'
-                        continue
-            if s == '1':
-                if gap == True :
-                    if last == '0':
-                        if counter > binary_gap:
-                            binary_gap = counter
-                        counter = 0
-                        last = '1'
-                        gap == False
-                        continue
-                if gap == False:
-                    if last == '0':
-                        last = '1'
-                        continue
-                    if last == '1':
-                        last = '1'
-                        continue
-    return binary_gap
+def solution(N):
+    max_gap = 0
+    current_gap = 0
+    # Skip the tailing zero(s)
+    while N > 0 and N%2 == 0:
+        N //= 2
+    while N > 0:
+        remainder = N%2
+        if remainder == 0:
+            # Inside a gap
+            current_gap += 1
+        else:
+            # Gap ends
+            if current_gap != 0:
+                max_gap = max(current_gap, max_gap)
+                current_gap = 0
+        N //= 2
+    return max_gap
+
+
+# 4
+def solution(N):
+    binary = "{0:b}".format(N).rstrip('0')
+    return len(max(binary.split("1"),key=len))
+
+
+# 5
+def binary_gap(N):
+    return len(max(format(N, 'b').strip('0').split('1')))
+
+
+# 6
+def solution(N):
+    xs = bin(N)[2:].strip('0').split('1')
+    return max([len(x) for x in xs])
+
+# 7
+def solution(N):
+    gap_list = [len(gap) for gap in bin(N)[2:].strip("0").split("1") if gap != ""]
+    return max(gap_list) if gap_list else 0
+

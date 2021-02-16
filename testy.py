@@ -1,11 +1,5 @@
-x = int(input("podja ile ma fibo: "))
-count = 0
+def solution(N):
+    gap_list = [len(gap) for gap in bin(N)[2:].strip("0").split("1") if gap != ""]
+    return max(gap_list) if gap_list else 0
 
-def fibo(x):
-    if x <= 1:
-        print(x)
-        return
-    else:
-        return(fibo(x-1) + fibo(x-2))
-
-print(fibo(x))
+print(solution(1041))
