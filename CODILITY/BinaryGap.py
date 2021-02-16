@@ -24,16 +24,91 @@ Write an efficient algorithm for the following assumptions:
 N is an integer within the range [1..2,147,483,647].
 """
 
-# x = int(input("podaj numer: "))
-y = 1041
-N = str(bin(y))[2:]
-print(N)
-
+# 1
 def solution(N):
-    dlu = len(N)
-    for i in range(1:dlu)
+    bnr = str(bin(N))[2:]
+    max = 0
+    accumu = 0
+
+    for i in bnr:
+        if i == '0':
+            accumu += 1
+
+        elif i == '1':
+            if accumu > max:
+                max = accumu
+            accumu = 0
+
+    return max
+
+print(solution(1041))
 
 
+# 2
+def solution2(N):
+    cnt = 0
+    result = 0
+    found_one = False
 
-# 1 00000 1 000 1
+    i = N
 
+    while i:
+        if i & 1 == 1:
+            if (found_one is False):
+                found_one = True
+            else:
+                result = max(result, cnt)
+            cnt = 0
+        else:
+            cnt += 1
+        i >>= 1
+
+    return result
+
+print(solution2(1041))
+
+
+# 3
+def countBinaryGap(num):
+    binary = format(num , "b")
+    print("Longest Binary Gap in :" + binary)
+    gap = False         # to indicate if there is a gap
+    counter = 0         # to count zeros in each gap
+    last = ''           # to store last iteration value
+    binary_gap = 0      # to store longest gap value
+    for s in binary:
+        if last == '':
+            last = str(s)
+            continue
+        else :
+            if s == '0':
+                if last == '1':
+                    counter += 1
+                    last = '0'
+                    gap = True
+                    continue
+                if last == '0':
+                    if counter > 0 :
+                        counter += 1
+                        last = '0'
+                        continue
+                    if counter == 0:
+                        last = '0'
+                        continue
+            if s == '1':
+                if gap == True :
+                    if last == '0':
+                        if counter > binary_gap:
+                            binary_gap = counter
+                        counter = 0
+                        last = '1'
+                        gap == False
+                        continue
+                if gap == False:
+                    if last == '0':
+                        last = '1'
+                        continue
+                    if last == '1':
+                        last = '1'
+                        continue
+    return binary_gap
