@@ -1,5 +1,8 @@
-def solution(N):
-    gap_list = [len(gap) for gap in bin(N)[2:].strip("0").split("1") if gap != ""]
-    return max(gap_list) if gap_list else 0
+# dostajesz ciąg int
+# zwraca indice dwóch numb ktore dodają się w okreslony target. Zakładasz, że kązdy input ma 1 rozw,
+# i nie uzywasz tego samego dwa razy.
 
-print(solution(1041))
+inp = [2,7,11,15]
+target = 9
+
+for  i in 
