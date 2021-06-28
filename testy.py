@@ -1,29 +1,28 @@
-string = "abba"
+words = ['zero',
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine',
+  'ten',
+  'eleven',
+  'twelve',
+  'thirteen',
+  'fourteen',
+  'fifteen',
+  'sixteen',
+  'seventeen',
+  'eighteen',
+  'nineteen',]
 
-def solution(string):
-    g = string.split()
-    d = "".join(g).lower()
-    l = []
-    for i in d:
-        l.append(i)
-    for j in l:
-        if l.count(j) == 1:
-            return j
+numb = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
+
+for i in numb:
+  wrd = words[i]
 
 
-def first_non_repeating_letter(string):
-    lowercase=string.lower()
-    for i,letter in enumerate(lowercase):
-        if lowercase.count(letter)==1:
-            return string[i]
-    return ''
-
-
-def first_non_repeating_letter(string):
-    low_str = []
-    for i in string:
-        low_str.append(i.lower())
-    for i in string:
-        if low_str.count(i.lower()) == 1:
-            return i
-    return ''
+print('ema')
