@@ -7,6 +7,9 @@ Sum the numbers from 0 to n-1 in different ways.
 """
 a = 'tom'
 b = 'jer'
+"""
+moze zip zbić - https://www.programiz.com/python-programming/methods/built-in/zip
+"""
 
 def while_loop(n=100_00000):
     i = 0
